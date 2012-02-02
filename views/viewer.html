@@ -1,0 +1,61 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="/css/readium-paginator.css">
+		<link rel="stylesheet" type="text/css" href="/css/fixed-layout-style.css">
+		<script src="/lib/jquery-1.7.1.min.js" type="text/javascript"></script>
+		<script src="/lib/lawnchair-0.6.1.min.js" type="text/javascript" ></script>
+		<script src="/scripts/fileSystemApi.js" type="text/javascript" ></script>
+		<script src="/scripts/readium-paginator.js" type="text/javascript"></script>
+		<script src="/scripts/fixed-paginator.js" type="text/javascript"></script>
+		<script src="/scripts/models/packageDocument.js" type="text/javascript"></script>
+		<script src="/scripts/models/ebook.js" type="text/javascript"></script>		
+		<script src="/scripts/viewer.js" type="text/javascript"></script>
+	</head>
+	<body>
+ 		<div id='menu'></div> 
+ 		<div id='top-bar'>
+ 			<!--<div id="title">This Is A Title</div>-->
+ 			<span class='top-bar-button' id="show-toc-button">
+ 				
+				<img id='readium-icon' src="/images/toc.png" height="16" width="16" alt="-" />
+
+			</span>
+
+			
+ 		</div>
+ 		<div id="settings" class="clearfix">
+					<span class='setting-button' id="page-back-button">
+						<img id='readium-icon' src="/images/left.png"  height="16" width="16" alt="<"/>
+					</span>
+					<span class="divider"></span>			
+					<span class='setting-button' id="increase-font-button">
+						<img id='readium-icon' src="/images/add.png" height="16" width="16" alt="+"/>
+					</span>
+					<span class="divider"></span>
+					<span class='setting-button' id="decrease-font-button">
+						<img id='readium-icon' src="/images/subtract.png" height="16" width="16" alt="-"/>
+					</span>
+					<span class="divider"></span>
+					<span class='setting-button' id="fullscreen-button">
+						<img id='readium-icon' src="/images/fullscreen.png" height="16" width="16" alt="-"/>
+					</span>
+					<span class="divider"></span>
+					<span class='setting-button' id="two-up-button">
+						<img id='readium-icon' src="/images/two-up.png" height="16" width="16" alt="2"/>
+					</span>
+					<span class="divider"></span>
+					<span class='setting-button' id="page-fwd-button">
+						<img id='readium-icon' src="/images/right.png" height="16" width="16" alt="<"/>
+					</span>
+				</div>
+ 		<div id='readium-content-container'></div>
+ 		<div id='page-wrap' class='clearfix'>
+			<div id="container" class='clearfix'>
+
+				
+			</div>
+		<div id='spine-divider'></div>
+		</div>
+	</body>
+</html>

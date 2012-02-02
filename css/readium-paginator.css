@@ -1,0 +1,324 @@
+html, body { 
+	margin: 0; 
+	padding: 0; 
+/*	height: 100%;  
+	width: 100%; */
+	background-color: #BBB;
+}
+
+#container {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    /*height: 100%;
+    overflow: hidden;*/ 
+}
+
+#content-end {
+	margin: 0;
+	height: 0;
+	padding: 0;
+}
+
+#content {
+  /*  -webkit-flow: 'foo';
+    -webkit-flow-into: foo;*/
+    color: #444;
+    font: normal 16px/1.25 'Helvetica Neue', sans-serif;
+}
+::-webkit-scrollbar {
+    visibility: hidden;
+}
+
+.page-wrap {
+	height: 100%;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	overflow: visible;
+}
+
+
+.page-wrap:before, .page-wrap:after {
+    content: "";
+    display: block;
+    height: 2%;
+    clear: both;
+}
+
+.page-margin {
+	height: 96%;
+	width: 60%;
+	margin: 0 auto;
+	padding: 0;
+	-webkit-box-shadow: 0 0 5px 5px#888;
+	background-color: white;
+	overflow: visible;
+}
+
+.page-margin:before, .page-margin:after {
+    content: "";
+    display: block;
+    height: 5%;
+    clear: both;
+}
+
+.page {
+    background-color: white;
+    border: none;
+    content: -webkit-from-flow('foo');
+    -webkit-flow-from: foo;
+	-webkit-region-overflow: auto;
+	overflow: visible;
+    height: 90%;
+    width: 90%;
+	margin: 0 auto;
+    
+}
+
+.space {
+	height: 5%;
+	margin: 0px;
+	width: 0px;
+}
+
+#container {
+	background-color: #BBB;
+}
+
+#settings {
+	position: fixed;
+	width: 286px;
+	height: 35px;
+	margin-top: -80px;
+	margin-left: -400px;
+	top: 100%;
+	left: 100%;
+	color: #fff;
+	border-radius: 5px;
+	text-align: center; 
+	border: 1px solid #000;
+	z-index: 10;
+}
+
+#settings span {
+	height: 35px;
+	margin: 0px;
+	padding: 0px;
+	border: none;
+	display: block;
+	float: left;
+}
+
+#settings span.setting-button {
+	width: 46px;
+	text-align: center;
+}
+
+span.setting-button:hover {
+	background-color: #353F5E;
+	opacity: 1;
+	cursor: pointer;
+}
+
+#settings span.setting-button img {
+	position: relative;
+	top: 10px;
+}
+
+#settings span.divider {
+	width: 0px;;
+	border-left: 1px solid black;	
+	border-right: 1px solid #353F5E;
+}
+
+/* stop buttons from highlighting on double click */
+#settings, #settings span, #settings img {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	-khtml-user-select: none;
+	user-select: none;
+}
+
+#settings, #top-bar {
+	/* Legacy browsers */
+	background: #000011 url("settings-bg.png") repeat-x top;
+	-o-background-size: 100% 100%;
+	-moz-background-size: 100% 100%;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+	/* Recent browsers */
+	background: -webkit-gradient(
+		linear,
+		left top, left bottom,
+		from(#353F5E),
+		to(#000011)
+	);
+	background: -webkit-linear-gradient(
+		top,
+		#353F5E,
+		#000011
+	);
+	background: -moz-linear-gradient(
+		top,
+		#353F5E,
+		#000011
+	);
+	background: -o-linear-gradient(
+		top,
+		#353F5E,
+		#000011
+	);
+	background: linear-gradient(
+		top,
+		#353F5E,
+		#000011
+	);
+}
+
+#settings {
+	opacity:0.9;
+	-webkit-transition: opacity 0.3s ease-in;
+	-moz-transition: opacity 0.3s ease-in;
+	-o-transition: opacity 0.3s ease-in;
+	-ms-transition: opacity 0.3s ease-in;	
+	transition: opacity 0.3s ease-in;
+}
+
+#settings.hover-fade {
+	opacity:0;
+}
+#settings.hover-fade:hover {
+	opacity:0.9;
+}
+
+.clearfix:after {
+    content: " ";
+    display: block;
+    height: 0;
+    clear: both;
+}
+
+/* Style declarations for two up mode */
+
+.two-up .page-wrap {
+	width: 50%;
+}
+
+.two-up .odd, .two-up .even .page-margin {
+	float: right;
+}
+
+.two-up .even, .two-up .odd .page-margin {
+	float: left;
+}
+
+.two-up .page-margin {
+	width: 90%;
+	margin: 0;
+}
+
+.two-up .page {
+	width: 85%;
+}
+
+#spine-divider {
+    position: absolute;
+    top: 2%;
+    left: 50%;
+    height:96%;
+    width: 1px;
+    -webkit-box-shadow: 0px 0px 15px 3px rgba(5, 5, 5, 0.7);
+	-moz-box-shadow: 0px 0px 15px 3px rgba(5, 5, 5, 0.7);
+	box-shadow: 0px 0px 15px 3px rgba(5, 5, 5, 0.7);
+	display: none;
+	background-color: #444;
+	opacity: 0.6;
+}
+
+
+/**************** THE TOC PANEL ************************/
+
+#menu {
+	position: fixed;
+	height: 100%;
+	width: 25%;
+	background-color: #F3F6F7;
+	top: 0;
+	left: -25%;
+	border-left: 1px solid #DDD;
+	font-size: 0.8em;
+	overflow: scroll;	
+}
+
+#page-wrap, #menu {
+	/*
+	-webkit-transition: all 0.5s linear;
+	-moz-transition: all 0.5s linear;
+	-o-transition: all 0.5s linear;
+	-ms-transition: all 0.5s linear;
+	*/
+}
+
+.show-toc #menu {
+	left: 0px;
+}
+
+.show-toc #page-wrap {
+	width: 75%;
+	left: 25%;
+	position: relative;
+}
+
+
+.show-toc .page-margin {
+	width: 95%;
+	margin: 0 auto;
+}
+
+.show-toc .two-up .page-margin {
+	width: 95%;
+}
+
+
+/****************** The Top Bar *****************/
+
+#top-bar {
+	width: 100%;
+	position: fixed;
+	height: 30px;
+	padding-top: 10px;
+	top: 0px;
+	z-index: 1000;
+	opacity: 0.9;
+	-moz-opacity: 0.9;
+	filter:alpha(opacity=9);
+	-webkit-transition: all 0.3s linear;
+	-moz-transition: all 0.3s linear;
+	-o-transition: all 0.3s linear;
+	-ms-transition: all 0.3s linear;
+	text-align: center;
+	color: #DDD;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; 
+}
+
+#show-toc-button {
+	float: left;
+	margin-left: 20px;
+}
+
+
+img#readium-icon {
+	height: 16px;
+	width: 16px;
+	margin: auto 0px;
+	padding: 0px;
+	position: relative;
+	top: 10px;
+	display: inline;
+}
+
+.top-bar-button img#readium-icon{
+	top: 0px;
+}

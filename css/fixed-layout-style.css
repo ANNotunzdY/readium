@@ -1,0 +1,29 @@
+/*.apple-fixed-layout*/
+
+.invisible {
+	visibility: hidden;
+	z-index: 0;
+}
+
+.fixed-page-wrap {
+	position: absolute;
+	top: 50px;
+	left: 50%;
+	overflow: hidden; 
+	-webkit-box-shadow: 0 0 5px 5px rgba(80,80,80,0.5);
+	background-color: #FFF;
+}
+
+.apple-fixed-layout #spine-divider {
+	top: 50px;
+}
+
+.two-up .fixed-page-wrap.odd { 
+	margin-left: 0px; 
+}
+
+body.apple-fixed-layout {
+	height: 100%;
+	width: 100%;
+	overflow: scroll;
+}
