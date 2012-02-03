@@ -28,7 +28,7 @@ body {
 }
 
 .navbar {
-  border-bottom: 3px solid #76D74D;
+  border-bottom: 3px solid #89CC60;
 }
 
 .navbar a {
@@ -78,3 +78,7 @@ body {
 }
 
 /*************** TOP BAR ******************/
+
+#version-info {
+  color: #89CC60;
+}
