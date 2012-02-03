@@ -3,7 +3,7 @@ body {
   
 }
 
-/*************** TOP BAR ******************/
+/*************** BEGIN: TOP BAR ******************/
 
 .bar-icon {
   padding: 0;
@@ -77,8 +77,31 @@ body {
   padding: 0px;
 }
 
-/*************** TOP BAR ******************/
+/*************** END: TOP BAR ******************/
+
+/*************** BEGIN: INFO MODAL ***************/
 
 #version-info {
   color: #89CC60;
 }
+
+#readium-info {
+  text-align: center; 
+  padding: 30px;
+
+  background: rgb(204,204,204); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(204,204,204,1) 0%, rgba(238,238,238,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(204,204,204,1)), color-stop(100%,rgba(238,238,238,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(204,204,204,1) 0%,rgba(238,238,238,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(204,204,204,1) 0%,rgba(238,238,238,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(204,204,204,1) 0%,rgba(238,238,238,1) 100%); /* IE10+ */
+background: linear-gradient(top,  rgba(204,204,204,1) 0%,rgba(238,238,238,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cccccc', endColorstr='#eeeeee',GradientType=0 ); /* IE6-9 */
+
+}
+ #readium-info p {
+   margin-bottom: 15px;
+ }
+
+
+/*************** END: INFO MODAL ***************/
