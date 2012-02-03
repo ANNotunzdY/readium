@@ -252,14 +252,6 @@ span.setting-button:hover {
 	overflow: scroll;	
 }
 
-#page-wrap, #menu {
-	/*
-	-webkit-transition: all 0.5s linear;
-	-moz-transition: all 0.5s linear;
-	-o-transition: all 0.5s linear;
-	-ms-transition: all 0.5s linear;
-	*/
-}
 
 .show-toc #menu {
 	left: 0px;

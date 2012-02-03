@@ -7,18 +7,20 @@
    "update_url": "http://billmccoy.github.com/readium/releases/update.xml",
    "background_page" : "background/background.html",
    "description": "An reader for EPUB3 books.",
+   
    "icons": {
       "16": "images/main_icon/small.png",
       "48": "images/main_icon/medium.png",
       "128": "images/main_icon/large.png"
    },
+
    "minimum_chrome_version": "14",
    "name": "Readium Reader",
    "permissions": [ 
-	"contextMenus",
-    "tabs",
- 	"http://*/",
-	"self"
+	  "contextMenus",
+      "tabs",
+      "http://*/",
+      "self"
 	],
    "content_scripts": [
     {
