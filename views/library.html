@@ -17,6 +17,7 @@
 			<div class="navbar-inner" id="inner-top-bar">
 				<div class="container-fluid" style="width: 100%">
 
+
 					<div class="bar-icon wide">
 						<a href="#add-book-modal" data-toggle="modal">
 							<img src="/images/top_bar/add_book.png" class="small"/>
@@ -24,13 +25,13 @@
 					</div>
 					
 					<div class="bar-icon">
-						<a href="#">
+						<a href="#" id='block-view-btn'>
 							<img src="/images/top_bar/thumb_view.png" class="small"/>
 						</a>
 					</div>
 					
 					<div class="bar-icon">
-						<a href="#">
+						<a href="#" id="row-view-btn">
 							<img src="/images/top_bar/list_view.png" class="small"/>
 						</a>
 					</div>
@@ -48,7 +49,7 @@
 
     	
 
-		<div class='container-fluid' id="library-books-list">
+		<div class='shmontainer' id="library-books-list">
 		<div class='content'>
 			<div id='library-container'>
 				<div id="loading-message">
@@ -56,6 +57,30 @@
 					<img src="/images/ajax-loader.gif" alt="loading..." height="42" width="42" />
 				</div>
 			</div>
+
+
+			<!--<div class="progress progress-success progress-striped active">
+  				<div class="bar" style="width: 40%;"></div>
+			</div>	-->
+			
+			<div id="library-items-container" class="row-view clearfix">
+
+				<!--<div class="book-item clearfix">
+					<div class='info-wrap clearfix'>
+					<div class="caption book-info">
+						<h3 class='green'>Thumbnail label</h3>
+						<h6>Some Stuff<h6>
+					</div>
+					<img src="http://placehold.it/150x220" alt="" class='cover-image'>
+					</div>
+					<div class="caption clearfix buttons">
+						<a href="#" class="btn read">Read</a> 
+						<a href="#" class="btn details">Details</a>
+					</div>
+				</div>-->
+
+
+			</div>	
 			
 				
 				<div class="modal fade" id="readium-info" ><!-- le info modal -->

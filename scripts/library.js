@@ -13,20 +13,18 @@
 	
 	var getBookHtml = function(book) {
 		var html;
-		html  = "<div class='library-item row' id='" + book.key + "'>";
-		html += "<div class='span3'>";
-		html += "<ul class='media-grid'><li><a href='" + getViewBookUrl(book) + "'>";
-		html += "<img class='thumbnail' src='" + book.cover_href + "' width='150' height='220' ></a></li>";
-		html += "</ul></div><div class='span11'>"
-		html += "<h3>" + book.title + "</h3>";
-		
-		html += "<div>author: " + book.author + "</div>";			
-		html += "<div>added: " + book.created_at.toString() + "</div>";
-		html += "<div>id: " + book.id + "</div>";
-		html += "<div>key: " + book.key + "</div>";
-		html += "<div><a class='btn' href='" + getViewBookUrl(book) +"'>view</a>";
-		html += getDeleteLink(book) + "</div>"
-		html += "</div></div>";
+		html  = "<div class='book-item clearfix' id='" + book.key + "'>";
+		html += "<div class='info-wrap clearfix'><div class='caption book-info'>";
+		html += "<h3 class='green'>"+ book.title +"</h3>";
+		html += "<h6>"+ book.author +"</h6>";
+		html += "</div>";
+		html += "<img class='cover-image' src='" + book.cover_href + "' width='150' height='220' >";
+		html += "</div>";
+		html += '<div class="caption clearfix buttons">';
+		html +=	'<a href="' + getViewBookUrl(book) + '" class="btn read">Read</a>'; 
+		html +=	'<a href="' + getDeleteLink(book) + '" class="btn details">Details</a>';
+		html += "</div>";
+		html += "</div>";
 		return html;
 	};
 	
@@ -64,7 +62,7 @@
 			}
 			
 		}
-		$('#library-container').html(html);
+		$('#library-items-container').html(html);
 		$('.delete-link').click(function(e) {
 			var key;
 			var $this = $(this);
@@ -76,6 +74,7 @@
 			} 
 			
 		});
+		$('#loading-message').remove();
 	};
 		
 	var handleFileSelect = function(evt) {
@@ -107,6 +106,13 @@
 				addLibraryBooks(all);				
 			});
 		});
+		$("#block-view-btn").click(function(e) {
+			$('#library-items-container').addClass("block-view").removeClass("row-view")
+		});
+		$("#row-view-btn").click(function(e) {
+			$('#library-items-container').addClass("row-view").removeClass("block-view")
+		})
+		
 	});
 
 })();

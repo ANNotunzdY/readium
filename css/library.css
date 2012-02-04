@@ -3,6 +3,13 @@ body {
   
 }
 
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
 /*************** BEGIN: TOP BAR ******************/
 
 .bar-icon {
@@ -81,7 +88,7 @@ body {
 
 /*************** BEGIN: INFO MODAL ***************/
 
-#version-info {
+#version-info, .green {
   color: #89CC60;
 }
 
@@ -112,5 +119,64 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cccccc', end
 #library-books-list {
   margin-top: 45px;
 }
+
+
+/**** library block item *******/
+.block-view .book-item {
+  text-align: center;
+  float: left;
+  margin: 20px 50px;
+}
+
+.block-view .btn.read {
+  float: left;
+}
+
+.block-view .btn.details {
+  float: right;
+}
+
+.block-view .info-icon {
+  display: none;
+}
+
+.block-view .info-wrap {
+  width: 150px;
+}
+
+.block-view .cover-image {
+  width: 150px;
+  height: 220px;
+}
+
+/**** library row item ********/
+.row-view .book-item {
+  width: 100%;
+  padding: 0px 20px;
+}
+
+.row-view .book-item:nth-child(odd) {
+  background-color: #DDD;
+
+}
+
+.row-view .cover-image {
+  position: relative;
+  width: 75px;
+  height: 105px;
+  top: -20px;
+}
+
+.row-view .book-info {
+  position: relative;
+  clear: none;
+  left: 110px;
+  top: 20px;
+}
+
+.row-view .buttons{
+  display: none;
+}
+
 
 /*************** END: LIBRARY BOOKS ************/
