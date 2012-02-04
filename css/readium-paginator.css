@@ -123,7 +123,7 @@ span.setting-button:hover {
 
 #settings span.setting-button img {
 	position: relative;
-	top: 10px;
+	top: 6px;
 }
 
 #settings span.divider {
@@ -302,12 +302,11 @@ span.setting-button:hover {
 
 
 img#readium-icon {
-	height: 16px;
-	width: 16px;
+	height: 25px;
+	width: 45px;
 	margin: auto 0px;
 	padding: 0px;
 	position: relative;
-	top: 10px;
 	display: inline;
 }
 
