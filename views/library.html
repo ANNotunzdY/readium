@@ -2,6 +2,8 @@
 <html>
 	<head>
 		<title>Readium Library</title>
+
+		<!-- Le styles -->
 		<link rel="stylesheet" type="text/css" href="/lib/bootstrap.min.css">
 		<style>
 			/* Must be exactly here No touchy! */
@@ -10,12 +12,17 @@
 			}
 		</style>
 		<link rel="stylesheet" type="text/css" href="/lib/bootstrap_responsive.css">
-
 		<link rel="stylesheet" type="text/css" href="/css/library.css">
+
+		<!-- Libraries etc... -->
 		<script src="/lib/jquery-1.7.1.min.js" type="text/javascript" ></script>
+		<script src="/lib/underscore.min.js" type="text/javascript" ></script>
+		<script src="/lib/backbone.min.js" type="text/javascript" ></script>
 		<script src="/lib/bootstrap.min.js" type="text/javascript" ></script>
 		<script src="/lib/lawnchair-0.6.1.min.js" type="text/javascript" ></script>
 		<script src="/scripts/fileSystemApi.js" type="text/javascript" ></script>
+
+		<!-- Application Code -->
 		<script src="/scripts/library.js" type="text/javascript"></script>
 	</head>
 	<body>
@@ -71,24 +78,7 @@
   				<div class="bar" style="width: 40%;"></div>
 			</div>	-->
 			
-			<div id="library-items-container" class="row-view clearfix">
-
-				<!--<div class="book-item clearfix">
-					<div class='info-wrap clearfix'>
-					<div class="caption book-info">
-						<h3 class='green'>Thumbnail label</h3>
-						<h6>Some Stuff<h6>
-					</div>
-					<img src="http://placehold.it/150x220" alt="" class='cover-image'>
-					</div>
-					<div class="caption clearfix buttons">
-						<a href="#" class="btn read">Read</a> 
-						<a href="#" class="btn details">Details</a>
-					</div>
-				</div>-->
-
-
-			</div>	
+			
 			
 				
 				<div class="modal fade" id="readium-info" ><!-- le info modal -->
@@ -130,5 +120,25 @@
 
 			</div>
 		</div>
+
+		<!-- Le templates -->
+		<script type="text/template" id='library-item-template'>
+			<div class='info-wrap clearfix'>
+				<div class='caption book-info'>
+					<h3 class='green'><%= title %></h3>
+					<h6><%= author %></h6>
+				</div>
+				<img class='cover-image' src='<%= cover_href %>' width='150' height='220' >
+			</div>
+			
+			<div class="caption clearfix buttons">
+				<a href="#todo" class="btn read">Read</a>
+				<a href="#todo" class="btn details">Details</a>
+			</div>
+		</script>
+		
+
+		<script type="text/template" id='library-items-template'>
+		</script>
 	</body>
 </html>
