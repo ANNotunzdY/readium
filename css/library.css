@@ -116,11 +116,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cccccc', end
 /*************** BEGIN: LIBRARY BOOKS ************/
 
 
-#library-books-list {
-  margin-top: 45px;
-}
-
-
 /**** library block item *******/
 .block-view .book-item {
   text-align: center;
