@@ -14,7 +14,7 @@
 		<link rel="stylesheet" type="text/css" href="/lib/bootstrap_responsive.css">
 		<link rel="stylesheet" type="text/css" href="/css/library.css">
 
-		<!-- Libraries etc... -->
+		<!-- les bibliothèques -->
 		<script src="/lib/jquery-1.7.1.min.js" type="text/javascript" ></script>
 		<script src="/lib/underscore.min.js" type="text/javascript" ></script>
 		<script src="/lib/backbone.min.js" type="text/javascript" ></script>
@@ -22,7 +22,7 @@
 		<script src="/lib/lawnchair-0.6.1.min.js" type="text/javascript" ></script>
 		<script src="/scripts/fileSystemApi.js" type="text/javascript" ></script>
 
-		<!-- Application Code -->
+		<!-- Le Code d'Application -->
 		<script src="/scripts/library.js" type="text/javascript"></script>
 	</head>
 	<body>
@@ -81,44 +81,44 @@
 			
 			
 				
-				<div class="modal fade" id="readium-info" ><!-- le info modal -->
-					<div>
-						<img src="/images/info_modal/about_readium_logo.png">
-					</div>
-					<div>
-						<h3 id="version-info">Version 0.1.0 Release Date 2.14.12</h3>
-					</div>
-					<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-					</p>
-					<div>
-						<img src="/images/info_modal/partner_logos.png">
-					</div>
-				</div><!-- end le info modal -->
+			<div class="modal fade" id="readium-info" ><!-- le info modal -->
+				<div>
+					<img src="/images/info_modal/about_readium_logo.png">
+				</div>
+				<div>
+					<h3 id="version-info">Version 0.1.0 Release Date 2.14.12</h3>
+				</div>
+				<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+				</p>
+				<div>
+					<img src="/images/info_modal/partner_logos.png">
+				</div>
+			</div><!-- end le info modal -->
 
 				
-				<div class="modal fade" id="add-book-modal" ><!-- add le book -->
+			<div class="modal fade" id="add-book-modal" ><!-- add le book -->
 
-					<div>
-						<h2>Add a New Book</h2>
-						<div id="book-url-form">
-							<h3>From a URL</h3>
-							<form>
-								<input id='book-url' style='width:300px'>
-								<button id='url-button' class='btn'>Add</button>
-							</form>
-						</div>
-						<div id="local-file-form">
-							<h3>From a Local File</h3>
-							<form>
-								<input type="file" id="files" name="files[]" multiple />
-							</form>
-						</div>
+				<div>
+					<h2>Add a New Book</h2>
+					<div id="book-url-form">
+						<h3>From a URL</h3>
+						<form>
+							<input id='book-url' style='width:300px'>
+							<button id='url-button' class='btn'>Add</button>
+						</form>
 					</div>
-					
-				</div><!-- end add le book -->
+					<div id="local-file-form">
+						<h3>From a Local File</h3>
+						<form>
+							<input type="file" id="files" name="files[]" multiple />
+						</form>
+					</div>
+				</div>
+				
+			</div><!-- end add le book -->
 
-			</div>
+		</div>
 		</div>
 
 		<!-- Le templates -->
@@ -134,9 +134,10 @@
 			<div class="caption clearfix buttons">
 				<a href="#todo" class="btn read" data-book='<%= id %>'>Read</a>
 				<a href="#todo" class="btn details">Details</a>
-			</div>
+			</div>			
 		</script>
-		
+		<!--var confMessage = "Are you sure you want to perminantly delete "
+			return "<a class='delete-link btn danger' href='#' data-key='"+book.key+"' data-confirm='"+ confMessage + book.title +"'>delete</a>";-->
 
 		<script type="text/template" id='library-items-template'>
 		</script>

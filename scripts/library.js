@@ -1,44 +1,29 @@
 (function($) {
 	
 	window.LibraryItem = Backbone.Model.extend({
-		// business logic goes hmyar
+		
 		getViewBookUrl: function(book) {
 			return "/views/viewer.html?book=" + this.get('key');
 		},
 
-		monkey: function(e) {
-			e.preventDefault();
-			alert($(this).attr('data-book'));
+		openInReader: function() {
+			window.location = this.getViewBookUrl();
 		},
 
 		delete: function() {
 			var key = this.get('key');
-			 Lawnchair(function() {
-				var that = this;
+			Lawnchair(function() {
+				var that = this; // <=== capture Lawnchair scope
 				this.get(key, function(book) {
 					if(book) {
 						Readium.FileSystemApi(function(fs) {
 							fs.rmdir(book.key);
-							that.remove(key);				
-							//$("#" + key).toggle('fast');
+							that.remove(key);
 						});
 					}
 				});		
 			});
 		}
-	
-		/*getDeleteLink:  function(book) {
-			var confMessage = "Are you sure you want to perminantly delete "
-			return "<a class='delete-link btn danger' href='#' data-key='"+book.key+"' data-confirm='"+ confMessage + book.title +"'>delete</a>";
-		}
-
-		
-	};
-	
-		var deleteBook = function(key) {
-			
-
-		};*/
 	});
 
 	window.LibraryItems = Backbone.Collection.extend({
@@ -51,10 +36,6 @@
 
 		tagName: 'div',
 
-		/*id: function() {
-			this.model.get('key');
-		},*/
-
 		className: "book-item clearfix",
 
 		initialize: function() {
@@ -63,16 +44,22 @@
 		},
 
 		render: function() {
-			var model = this.model; 
-			var that = this;
-			var renderedContent = this.template(model.toJSON());
+			var renderedContent = this.template(this.model.toJSON());
 			$(this.el).html(renderedContent);
-			this.$('.details').click(function(e) {
-				e.preventDefault();
-				model.delete();
-				that.remove();
-			});
 			return this;
+		},
+
+		events: {
+			"click .details": function(e) {
+				e.preventDefault();
+				this.model.delete();
+				this.remove();
+			},
+
+			"click .read": function(e) {
+				this.model.openInReader();
+			}
+			
 		}
 	});
 
@@ -112,8 +99,11 @@
 			
 			// i dunno if this should go here
 			$('#library-books-list').html(this.el)
-			//setupClickHandlers();
 			return this;
+		},
+
+		events: {
+			
 		}
 	});
 
