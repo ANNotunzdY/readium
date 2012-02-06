@@ -28,7 +28,7 @@
 
 	window.LibraryItems = Backbone.Collection.extend({
 
-		model: LibraryItem
+		model: LibraryItem,
 		
 	});
 
@@ -87,12 +87,7 @@
 			var collection = this.collection;
 			var $container = $(this.el);
 			$container.html(this.template({}));
-
-			// it the collection is empty break out early
-			if(collection.length === 0 ) {
-				$container.append("<p>Your book list is empty</p>");
-				return this;
-			}
+			this.$('#empty-message').toggle(this.collection.isEmpty());
 
 			collection.each(function(item) {
 				var view = new LibraryItemView({

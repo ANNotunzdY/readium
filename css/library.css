@@ -35,7 +35,7 @@ body {
 }
 
 .navbar {
-  border-bottom: 3px solid #89CC60;
+  border-bottom: 3px solid #6FA64D;
 }
 
 .navbar a {
@@ -89,7 +89,7 @@ body {
 /*************** BEGIN: INFO MODAL ***************/
 
 #version-info, .green {
-  color: #89CC60;
+  color: #6FA64D;
 }
 
 #readium-info {
@@ -144,6 +144,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cccccc', end
   height: 220px;
 }
 
+.block-view .info-icon {
+  visibility: hidden;
+}
+
 /**** library row item ********/
 .row-view .book-item {
   width: 100%;
@@ -171,6 +175,28 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cccccc', end
 
 .row-view .buttons{
   display: none;
+}
+
+.row-view .info-icon {
+  position: relative;
+  right: 20px;
+}
+
+/***** No Books message ******/
+
+#empty-message {
+  padding: 5px 25px;
+}
+
+#empty-message-text {
+  text-align: center;
+  position: relative;
+  width: 250px;
+  font-size: 2em;
+  line-height: 1.1;
+  top: -60px;
+  left: 70px;
+  font-weight: 200;
 }
 
 

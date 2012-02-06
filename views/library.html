@@ -130,11 +130,14 @@
 					<h6><%= author %></h6>
 				</div>
 				<img class='cover-image' src='<%= cover_href %>' width='150' height='220' >
+				<a href="#details-modal-<%= id %>" class="info-icon" data-toggle="modal">
+					<img class='info-icon pull-right' src='/images/library/info-icon.png' height="39px" width="39px"  >
+				</a>
 			</div>
 			
 			<div class="caption clearfix buttons">
 				<a href="#todo" class="btn read" data-book='<%= id %>'>Read</a>
-				<a href="#details-modal-<%= id %>" class="btn details" data-toggle="modal">
+				<a href="#details-modal-<%= id %>" class="btn details" data-toggle="modal" >
 					Details
 				</a>
 			</div>
@@ -160,6 +163,12 @@
 		
 
 		<script type="text/template" id='library-items-template'>
+			<div id='empty-message'>
+				<img id='empty-arrow' src='/images/library/empty_library_arrow.png' />
+				<p id='empty-message-text' class='green'>
+					Add items to your</br>library here!
+				</p>
+			</div>
 		</script>
 	</body>
 </html>
