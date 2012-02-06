@@ -171,6 +171,18 @@ var clickHandler = function(evt) {
 	}
 };
 
+var flash = function(text, type) {
+	var className = "alert";
+	if(type) {
+		className += " alert-" + type;
+	}
+	$('#flash-container').
+		html('<div>'+text+'</div>').
+		removeClass().
+		addClass(className);
+	
+}
+
 $(function() {
 	document.getElementById('files').addEventListener('change', handleFileSelect, false);
 	document.getElementById('url-button').addEventListener('click', clickHandler, false);
