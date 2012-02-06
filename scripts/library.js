@@ -52,8 +52,15 @@
 		events: {
 			"click .details": function(e) {
 				e.preventDefault();
-				this.model.delete();
-				this.remove();
+				var confMessage;
+				confMessage  = "Are you sure you want to perminantly delete " 
+				confMessage += this.model.get('title');
+				confMessage += "?"
+
+				if(confirm(confMessage)) {
+					this.model.delete();
+					this.remove();
+				}
 			},
 
 			"click .read": function(e) {
