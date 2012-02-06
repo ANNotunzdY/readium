@@ -133,7 +133,27 @@
 			
 			<div class="caption clearfix buttons">
 				<a href="#todo" class="btn read" data-book='<%= id %>'>Read</a>
-				<a href="#todo" class="btn details">Details</a>
+				<a href="#details-modal-<%= id %>" class="btn details" data-toggle="modal">
+					Details
+				</a>
+			</div>
+			<div id='details-modal-<%= id %>' class='modal fade'>
+				<div class="pull-left">
+					<img class='cover-image' src='<%= cover_href %>' width='150' height='220' >
+					<div class="caption clearfix buttons">
+				<a href="#todo" class="btn read" data-book='<%= id %>'>Read</a>
+				<a class="btn btn-danger delete">Delete</a>
+			</div>
+				</div>
+				<div class='caption book-info pull-right'>
+					<div class='green'><%= title %></div>
+					<div>Author: <%= author %></div>
+					<div>Publisher: <%= publisher %></div>
+					<div>ID: <%= id %></div>
+					<div>Todo: ePUB 2.2</div>
+					<div>Added: <%= created_at%></div>
+				</div>
+				
 			</div>			
 		</script>
 		

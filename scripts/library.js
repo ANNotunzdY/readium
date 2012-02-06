@@ -50,7 +50,7 @@
 		},
 
 		events: {
-			"click .details": function(e) {
+			"click .delete": function(e) {
 				e.preventDefault();
 				var confMessage;
 				confMessage  = "Are you sure you want to perminantly delete " 
