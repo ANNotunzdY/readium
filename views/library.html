@@ -98,25 +98,56 @@
 			</div><!-- end le info modal -->
 
 				
-			<div class="modal fade" id="add-book-modal" ><!-- add le book -->
+			<div id="add-book-modal" class="modal fade" ><!-- add le book Modal -->
+		
+				<div class="modal-header">
+					<a class="close" data-dismiss="modal">&times;</a>
+					<h3>Add Book To Readium Library:</h3>
+				</div>
 
-				<div>
-					<h2>Add a New Book</h2>
-					<div id="book-url-form">
-						<h3>From a URL</h3>
-						<form>
-							<input id='book-url' style='width:300px'>
-							<button id='url-button' class='btn'>Add</button>
-						</form>
-					</div>
-					<div id="local-file-form">
-						<h3>From a Local File</h3>
-						<form>
-							<input type="file" id="files" name="files[]" multiple />
-						</form>
+				<div class="modal-body">
+
+					<form class="form-horizontal">
+
+
+          
+        		<div class="control-group">
+
+					<label for="book-url">From the web:</label>
+					<div class='controls'>
+										<input type='text' id='book-url' class="span3" placeholder="http://">
+										<p class="help-block">Enter a URL to a .epub file</p>
 					</div>
 				</div>
-				
+				<div class="control-group">
+					<label for="files">From Local File:</label>
+					<div class="controls">
+					<input type="file" id="files" name="files[]" multiple />
+					</div>
+					
+					
+				</div>
+				<div class="control-group">
+            		<label class="control-label" for="optionsCheckbox">Validate:</label>
+            		<div class="controls">
+              		<label class="checkbox">
+                		<input type="checkbox" id="optionsCheckbox" value="option1">
+                		Confirm that this book complies with ePUB standards
+              			</label>
+            		</div>
+          		</div>
+
+					</form>
+					
+					
+				</div>
+
+				<div class="modal-footer">
+					<!--<a href="#" class="btn btn-primary">Save changes</a> Help?-->
+					<button id='url-button' class='btn btn-primary'>Add Book</button>
+					<a href="#" class="btn" data-dismiss="modal">Cancel</a>
+				</div>
+
 			</div><!-- end add le book -->
 
 		</div>
