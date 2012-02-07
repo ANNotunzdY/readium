@@ -15,7 +15,7 @@
    },
 
    "minimum_chrome_version": "14",
-   "name": "Readium Reader",
+   "name": "Readium",
    "permissions": [ 
 	  "contextMenus",
       "tabs",
