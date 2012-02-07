@@ -252,6 +252,10 @@ span.setting-button:hover {
 	overflow: scroll;	
 }
 
+#menu li {
+	text-align: left;
+	margin: 5px;
+}
 
 .show-toc #menu {
 	left: 0px;
