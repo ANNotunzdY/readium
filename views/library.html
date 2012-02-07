@@ -157,8 +157,10 @@
 		<script type="text/template" id='library-item-template'>
 			<div class='info-wrap clearfix'>
 				<div class='caption book-info'>
-					<h3 class='green'><%= title %></h3>
-					<h6><%= author %></h6>
+					<h3 class='green info-item title'><%= title %></br></h3>
+					<h3 class='info-item author'><small><%= author %>Author Name </small></h3>
+					<h3 class='info-item epub-version'><small>ePUB 2.2</small></h3>
+					
 				</div>
 				<img class='cover-image' src='<%= cover_href %>' width='150' height='220' >
 				<a href="#details-modal-<%= id %>" class="info-icon" data-toggle="modal">

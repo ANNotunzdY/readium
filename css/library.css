@@ -148,10 +148,33 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cccccc', end
   visibility: hidden;
 }
 
+.block-view .info-item {
+  width: 150px;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.block-view .info-item.title {
+  width: 200px;
+  font-weight: 300;
+  margin-left: -15px;
+}
+
+.block-view .info-item.epub-version {
+  display: none;
+}
+
+.block-view .info-item.author {
+  margin-top: -5px;
+}
+
 /**** library row item ********/
 .row-view .book-item {
   width: 100%;
   padding: 0px 20px;
+  height: 150px;
 }
 
 .row-view .book-item:nth-child(odd) {
@@ -163,7 +186,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cccccc', end
   position: relative;
   width: 75px;
   height: 105px;
-  top: -20px;
+  top: -80px;
 }
 
 .row-view .book-info {
@@ -180,6 +203,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cccccc', end
 .row-view .info-icon {
   position: relative;
   right: 20px;
+  top: -30px;
+}
+
+.row-view .info-item.title {
+  font-weight: 300;
+}
+
+.row-view .info-item.author {
+  margin-top: -5px;
+  padding-bottom: 20px;
 }
 
 /***** No Books message ******/
