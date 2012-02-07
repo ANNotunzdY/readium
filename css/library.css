@@ -1,6 +1,6 @@
 
-body {
-  
+html, body {
+  width: 100%;
 }
 
 .clearfix:after {
@@ -137,6 +137,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cccccc', end
   color: #999;
 }
 
+img.read:hover {
+  cursor: pointer;
+}
+
 /***** The book details modal *******/
 .details-modal {
   height: 300px;
@@ -158,6 +162,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cccccc', end
 
 .modal-detail.gap {
   margin-bottom: 25px;
+}
+
+img.details-cover-image {
+  width: 150px;
+  height: 220px;
+}
+
+.modal-detail.source {
+clear: both;
+text-align: left;
+padding-top: 20px;
 }
 
 /**** library block item *******/
