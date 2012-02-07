@@ -87,12 +87,12 @@ Readium.ExtractBook = function(url, callback) {
 			return coverUri.resolve(rootUri).toString();
 		}
 		else {
-			return '/images/genericBook.png';
+			return '/images/library/missing-cover-image.png';
 		}
 	};
 	
 	var saveEntry = function() {
-		var metaData = _packageDoc.getMetaData();
+		var metaData = _packageDoc.getMetaData(); 
 		metaData.created_at = new Date();
 		metaData.updated_at = new Date();
 		metaData.key = _urlHash;
