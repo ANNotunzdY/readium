@@ -157,38 +157,42 @@
 		<script type="text/template" id='library-item-template'>
 			<div class='info-wrap clearfix'>
 				<div class='caption book-info'>
-					<h3 class='green info-item title'><%= title %></br></h3>
-					<h3 class='info-item author'><small><%= author %>Author Name </small></h3>
-					<h3 class='info-item epub-version'><small>ePUB 2.2</small></h3>
+					<h3 class='green info-item title'><%= title %></h3>
+					<h3 class='info-item author'><%= author || "Unknown" %></h3>
+					<h3 class='info-item epub-version'><%= "ePUB 2.2" %></h3>
 					
 				</div>
-				<img class='cover-image' src='<%= cover_href %>' width='150' height='220' >
-				<a href="#details-modal-<%= id %>" class="info-icon" data-toggle="modal">
+				
+				<img class='cover-image read' src='<%= cover_href %>' width='150' height='220' >
+				
+				<a href="#details-modal-<%= key %>" class="info-icon" data-toggle="modal">
 					<img class='info-icon pull-right' src='/images/library/info-icon.png' height="39px" width="39px"  >
 				</a>
 			</div>
 			
 			<div class="caption clearfix buttons">
-				<a href="#todo" class="btn read" data-book='<%= id %>'>Read</a>
-				<a href="#details-modal-<%= id %>" class="btn details" data-toggle="modal" >
+				<a href="#todo" class="btn read" data-book='<%= key %>'>Read</a>
+				<a href="#details-modal-<%= key %>" class="btn details" data-toggle="modal" >
 					Details
 				</a>
 			</div>
-			<div id='details-modal-<%= id %>' class='modal fade'>
-				<div class="pull-left">
-					<img class='cover-image' src='<%= cover_href %>' width='150' height='220' >
-					<div class="caption clearfix buttons">
-				<a href="#todo" class="btn read" data-book='<%= id %>'>Read</a>
-				<a class="btn btn-danger delete">Delete</a>
+
+			<div id='details-modal-<%= key %>' class='modal fade details-modal'>
+				<div class="pull-left modal-cover-wrap">
+					<img class='details-cover-image' src='<%= cover_href %>' width='150' height='220' >
+					<div class="caption clearfix modal-buttons">
+				<a href="#todo" class="btn read" data-book='<%= key %>'>Read</a>
+				<a class="btn btn-danger delete pull-right">Delete</a>
 			</div>
 				</div>
-				<div class='caption book-info pull-right'>
-					<div class='green'><%= title %></div>
-					<div>Author: <%= author %></div>
-					<div>Publisher: <%= publisher %></div>
-					<div>ID: <%= id %></div>
-					<div>Todo: ePUB 2.2</div>
-					<div>Added: <%= created_at%></div>
+				<div class='caption modal-book-info'>
+					<h3 class='green modal-title'><%= title %></h3>
+					<div class='modal-detail gap'>Author: <%= author || "Unknown" %></div>
+					<div class='modal-detail'>Publisher: <%= publisher || "Unknown" %></div>
+					<div class='modal-detail'>Pub Date: Todo 29, 2011</div>
+					<div class='modal-detail gap'>ID: <%= id || "Unknown" %></div>
+					<div class='modal-detail green'>Format: ePUB 2.2</div>
+					<div class='modal-detail'>Added: <%= created_at || "Unknown" %></div>
 				</div>
 				
 			</div>			

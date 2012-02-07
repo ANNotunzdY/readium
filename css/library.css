@@ -88,7 +88,7 @@ body {
 
 /*************** BEGIN: INFO MODAL ***************/
 
-#version-info, .green {
+#version-info, .green, .modal-detail.green {
   color: #6FA64D;
 }
 
@@ -115,6 +115,50 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cccccc', end
 
 /*************** BEGIN: LIBRARY BOOKS ************/
 
+/***** General Rules ***********/
+
+.book-item .cover-image {
+  -webkit-box-shadow: -7px 6px 12px rgba(50, 50, 50, 0.75);
+  -moz-box-shadow:    -7px 6px 12px rgba(50, 50, 50, 0.75);
+  box-shadow:         -7px 6px 12px rgba(50, 50, 50, 0.75);
+}
+
+.book-item .buttons {
+  margin-top: 10px;
+}
+
+.book-item .info-item.title {
+  font-weight: 300;
+}
+
+.info-item.epub-version, .info-item.author, .modal-detail {
+  font-size: 14px;
+  font-weight: normal;
+  color: #999;
+}
+
+/***** The book details modal *******/
+.details-modal {
+  height: 300px;
+  padding: 20px;
+}
+
+.modal-book-info {
+  text-align: left;
+}
+
+.modal-title {
+  font-weight: 300;
+  font-size: 1.5em;
+}
+
+.modal-cover-wrap {
+  margin-right: 20px;
+}
+
+.modal-detail.gap {
+  margin-bottom: 25px;
+}
 
 /**** library block item *******/
 .block-view .book-item {
@@ -159,7 +203,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cccccc', end
 .block-view .info-item.title {
   width: 200px;
   font-weight: 300;
-  margin-left: -15px;
+  position: relative;
+  left: -25px;
 }
 
 .block-view .info-item.epub-version {
