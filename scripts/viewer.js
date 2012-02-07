@@ -343,7 +343,7 @@ Readium.TocManager = function(book) {
 	}
 
 	// temp fix me
-	var pos = "-41px";
+	var pos = "-44px";
 	var toggleUi = function() {
 		var style = $('#top-bar')[0].style;
 		

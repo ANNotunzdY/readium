@@ -297,6 +297,7 @@ span.setting-button:hover {
 	text-align: center;
 	color: #DDD;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; 
+	border-bottom: 3px solid #6FA64D;
 }
 
 #back-to-lib-button {
@@ -317,3 +318,59 @@ img#readium-icon {
 .top-bar-button img#readium-icon{
 	top: 0px;
 }
+
+#bar-logo {
+	position: relative;
+	top: -10px;
+	right: 20px;
+}
+
+
+/*************** BEGIN: INFO MODAL ***************/
+
+#version-info, .green, .modal-detail.green {
+  color: #6FA64D;
+}
+
+#readium-info {
+	text-align: center; 
+	padding: 30px;
+
+	background: rgb(204,204,204); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(204,204,204,1) 0%, rgba(255,255,255,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(204,204,204,1)), color-stop(100%,rgba(255,255,255,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(204,204,204,1) 0%,rgba(255,255,255,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(204,204,204,1) 0%,rgba(255,255,255,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(204,204,204,1) 0%,rgba(255,255,255,1) 100%); /* IE10+ */
+	background: linear-gradient(top,  rgba(204,204,204,1) 0%,rgba(255,255,255,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cccccc', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+}
+
+ #readium-info p {
+	margin: 0;
+	margin-bottom: 15px;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 13px;
+	line-height: 18px;
+	color: #333;
+	text-align: center;
+ }
+
+ #readium-info div {
+ 	text-align: center;
+ }
+
+ #readium-info h3 {
+ 	line-height: 27px;
+	font-size: 18px;
+	font-weight: bold;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	margin: 0;
+	text-rendering: optimizelegibility;
+	display: block;
+}
+
+
+
+
+/*************** END: INFO MODAL ***************/
