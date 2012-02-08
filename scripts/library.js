@@ -1,6 +1,8 @@
 (function($) {
 	
 	window.LibraryItem = Backbone.Model.extend({
+
+		idAttribute: "key",
 		
 		getViewBookUrl: function(book) {
 			return "/views/viewer.html?book=" + this.get('key');
