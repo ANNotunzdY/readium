@@ -116,9 +116,9 @@ $(function() {
 
 		addOne: function(book) {
 			var view = new LibraryItemView({
-				model: item,
-				collection: collection,
-				id: item.get('id')
+				model: book,
+				collection: this.collection,
+				id: book.get('id')
 			});
 			$(this.el).append( view.render().el );
 		},
