@@ -14,7 +14,8 @@ if(typeof Readium.Utils.MD5 === "undefined" ) {
 
 // This method takes a url for an epub, unzips it and then
 // writes its contents out to disk.
-Readium.ExtractBook = function(url, callback, display_message) {
+Readium.ExtractBook = function(url, winCb, failCb, options) {
+
 
 	// Constants
 	var MIMETYPE = "mimetype";
@@ -33,9 +34,15 @@ Readium.ExtractBook = function(url, callback, display_message) {
 	var _fixedLayout;
 	var _openToSpread;
 	var _rootUrl;
+	var _options = options || {};
+	var _metaData;
+	var _log = options.display_message || console.log;
 
-	// todo polish this up
-	var displayMessage = display_message || console.log;
+	var update = function(complete, total) {
+		if(options.update_progress) {
+			options.update_progress(complete, total);
+		}
+	};
 
 	
 	
@@ -102,6 +109,7 @@ Readium.ExtractBook = function(url, callback, display_message) {
 		metaData.cover_href = generateCoverImageUrl( metaData );
 		new Lawnchair(function() {
 			this.save(metaData, function() {
+				_metaData = metaData;
 				unpackBook(_zip, 0);				
 			});
 		});
@@ -119,14 +127,14 @@ Readium.ExtractBook = function(url, callback, display_message) {
 			try {
 				extractEntryByName(zip, rootFile, callback);				
 			} catch(e) {
-				displayMessage(e);
+				_log(e);
 				clean();
 			}
 
 		}
 		else {
 			// fatal error
-			displayMessage("ERROR: root file could not be found, progress stopped");
+			_log("ERROR: root file could not be found, progress stopped");
 			clean();
 		}
 	}
@@ -139,8 +147,8 @@ Readium.ExtractBook = function(url, callback, display_message) {
 			var rootFiles = xmlDoc.getElementsByTagName("rootfile");
 
 			if(rootFiles.length !== 1) {
-				displayMessage("Error processing " + CONTAINER);
-				displayMessage("Error: support for multiple rootfiles not implemented");
+				_log("Error processing " + CONTAINER);
+				_log("Error: support for multiple rootfiles not implemented");
 				clean();
 			}
 			else {
@@ -148,7 +156,7 @@ Readium.ExtractBook = function(url, callback, display_message) {
 					rootFilePath = rootFiles[0].attributes["full-path"].value;
 				}
 				else {
-					displayMessage("Error: could not find package rootfile");
+					_log("Error: could not find package rootfile");
 					
 					// fatal error, stop processing
 					clean();
@@ -159,7 +167,7 @@ Readium.ExtractBook = function(url, callback, display_message) {
 					rootFileMime = rootFiles[0].attributes["media-type"].value;
 				} else {
 					// non-fatal
-					displayMessage("root file missing media type, will attempt to detect automatically");
+					_log("root file missing media type, will attempt to detect automatically");
 				}
 				
 				parseContainerRoot(zip, rootFilePath, rootFileMime);
@@ -170,7 +178,7 @@ Readium.ExtractBook = function(url, callback, display_message) {
 		try {
 			extractEntryByName(zip, CONTAINER, callback);
 		} catch (e) {
-			displayMessage(e);
+			_log(e);
 			clean();
 		}
 
@@ -204,14 +212,14 @@ Readium.ExtractBook = function(url, callback, display_message) {
 			if($.trim(content) === EPUB3_MIMETYPE) {
 				parseIbooksDisplayOptions(zip);
 			} else {
-				displayMessage("Invalid mimetype discovered. Progress cancelled.");
+				_log("Invalid mimetype discovered. Progress cancelled.");
 				clean();
 			}
 		}
 		try {
 			extractEntryByName(zip, MIMETYPE, validateCallback);			
 		} catch (e) {
-			displayMessage(e);
+			_log(e);
 			clean();
 		}
 
@@ -219,6 +227,7 @@ Readium.ExtractBook = function(url, callback, display_message) {
 	
 	var validateZip = function(zip) {
 		// weak test, just make sure MIMETYPE and CONTAINER files are where expected
+		update(1, zip.entries.length + 5);
 		if(zip.entryNames.indexOf(MIMETYPE) >= 0 && zip.entryNames.indexOf(CONTAINER) >= 0) {
 			checkMimetype(zip);
 		}
@@ -227,13 +236,15 @@ Readium.ExtractBook = function(url, callback, display_message) {
 			clean();
 		}
 		
-	}
+	};
 	
 	var unpackBook = function(zip, i) {
 		var entry;
+
+		update(3 + i, zip.entries.length + 5);
 		
 		var unpackFailed = function() {
-			displayMessage("ERROR: durring unzipping process failed");
+			_log("ERROR: durring unzipping process failed");
 			clean();
 		}
 
@@ -245,7 +256,7 @@ Readium.ExtractBook = function(url, callback, display_message) {
 		}
 		
 		if( i === zip.entries.length) {
-			displayMessage("Unpacking process completed successfully!");
+			_log("Unpacking process completed successfully!");
 			correctURIs(zip, 0);
 			
 		} 
@@ -255,26 +266,23 @@ Readium.ExtractBook = function(url, callback, display_message) {
 				unpackBook(zip, i + 1);
 			}
 			else {
-				displayMessage("extracting: " + entry.name);
+				_log("extracting: " + entry.name);
 				entry.extract(writeToDisk);
 			}
 		}
-	}
+	};
 
 	var correctURIs = function(zip, i) {
 		var entry;
 		
 		var monkeypatchingFailed = function() {
-			displayMessage("ERROR: durring monkeypatching of URIs process failed");
+			_log("ERROR: durring monkeypatching of URIs process failed");
 			clean();
 		}
 		
 		if( i === zip.entries.length) {
-			displayMessage("Unpacking process completed successfully!");
-			setTimeout(function() {
-				chrome.tabs.create({url: "/views/viewer.html?book=" + _urlHash });
-					window.close();
-			}, 1000);
+			_log("Unpacking process completed successfully!");
+			winCb(_metaData);
 			
 		} 
 		else {
@@ -283,13 +291,13 @@ Readium.ExtractBook = function(url, callback, display_message) {
 				correctURIs(zip, i + 1);
 			}
 			else {
-				displayMessage("monkey patching: " + entry.name);
+				_log("monkey patching: " + entry.name);
 				monkeyPatchUrls(getUrl(entry), function() {
 						correctURIs(zip, i + 1);
 					}, monkeypatchingFailed);
 			}
 		}
-	}
+	};
 	
 	var beginUnpacking = function() {
 		_fsApi.getFileSystem().root.getDirectory(_urlHash, {create: true}, function(dir) {

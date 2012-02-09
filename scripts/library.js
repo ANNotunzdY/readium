@@ -86,7 +86,8 @@ $(function() {
 
 		initialize: function() {
 			_.bindAll(this, "render");
-			this.collection.bind('reset', this.render)
+			this.collection.bind('reset', this.render);
+			this.collection.bind('add', this.render);
 		},
 
 		render: function() {
@@ -148,7 +149,7 @@ $(function() {
 		updateProgress: function(index, total) {
 			var prog = index * 100 / total;
 			this.set({
-				progress: prog,
+				progress: prog.toFixed().toString() + "%",
 			});
 		},
 
@@ -211,13 +212,28 @@ $(function() {
 var beginExtraction = function(url) {
 	 // Create a new window to the info page.
 	 window.extraction.start();
-    Readium.ExtractBook(url, function() {
-    	window.extraction.end();
-    }, function(message) {
-		window.extraction.set({
-			message: message
-		})
-	});
+
+	var extractOptions = {
+		display_message: function(message) {
+			window.extraction.set({
+				message: message
+			});
+		},
+
+		update_progress: function(x, y) {
+			window.extraction.updateProgress(x,y);
+		}
+	};
+	
+	Readium.ExtractBook(url, function(book) {
+			window.extraction.end();
+			window.Library.add(new window.LibraryItem(book));
+			setTimeout(function() {
+				//chrome.tabs.create({url: "/views/viewer.html?book=" + book.key });
+			}, 500);
+		}, function() {
+			/* wah wah :( */
+		}, extractOptions);
 };
 
 var resetAndHideForm = function() {

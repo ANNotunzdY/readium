@@ -22,16 +22,25 @@
 	
 			// sanity check (only have to be a little sane)
 			if(url.length <= 0) {
-				displayMessage("The book url does not apear valid");
+				$('#loading-status').html( message );
 				return;
 			}
-	
-			Readium.ExtractBook(url, function() {}, function(message) {
-				$('#loading-status').html( message );
-				console.log(message);
-			});
 
-			displayMessage("Fetching resource from: " + url);
+			var extractOptions = {
+				display_message: function(message) {
+					$('#loading-status').html( message );
+					console.log(message);
+				}
+			}
+	
+			Readium.ExtractBook(url, function(book) {
+					setTimeout(function() {
+						chrome.tabs.create({url: "/views/viewer.html?book=" + book.key });
+						window.close();
+					}, 1000);
+				}, function() {
+					/* wah wah :( */
+				}, extractOptions);
 		};
 	</script>
 
@@ -40,8 +49,7 @@
   <body>
 	<div id="loading-message" >
     	<h1>Loading Book</h1>
-		<img src="/images/ajax-loader.gif" alt="processing..." height="42" width="42" />
-		
+		<img src="/images/ajax-loader.gif" alt="processing..." height="42" width="42" />	
 		<div id="loading-status"></div>
 	</div>
   </body>
