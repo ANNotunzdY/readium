@@ -58,11 +58,14 @@ $(function() {
 			"click .delete": function(e) {
 				e.preventDefault();
 				var confMessage;
+				var selector = "#details-modal-" + this.model.get('key');
 				confMessage  = "Are you sure you want to perminantly delete " 
 				confMessage += this.model.get('title');
-				confMessage += "?"
+				confMessage += "?";
+
 
 				if(confirm(confMessage)) {
+					$(selector).modal('hide');
 					this.model.delete();
 					this.remove();
 				}
@@ -125,7 +128,7 @@ $(function() {
 		}
 	});
 
-	
+	// Does this need to be here???? I dont think so....
 	var addLibraryBooks =  function(records) {
 		var html;
 		if(records.length === 0) {
@@ -239,8 +242,8 @@ var beginExtraction = function(url) {
 			window.extraction.end();
 			window.Library.add(new window.LibraryItem(book));
 			setTimeout(function() {
-				//chrome.tabs.create({url: "/views/viewer.html?book=" + book.key });
-			}, 500);
+				chrome.tabs.create({url: "/views/viewer.html?book=" + book.key });
+			}, 800);
 		}, function() {
 			/* wah wah :( */
 		}, extractOptions);
