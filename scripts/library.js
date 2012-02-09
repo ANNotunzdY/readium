@@ -1,3 +1,5 @@
+$(function() {
+
 (function($) {
 	
 	window.LibraryItem = Backbone.Model.extend({
@@ -40,9 +42,10 @@
 
 		className: "book-item clearfix",
 
+		template: _.template( $('#library-item-template').html() ),
+
 		initialize: function() {
-			_.bindAll(this, "render");
-			this.template = _.template( $('#library-item-template').html() );	
+			_.bindAll(this, "render");	
 		},
 
 		render: function() {
@@ -79,9 +82,10 @@
 
 		className: 'row-view clearfix',
 
+		template: _.template( $('#library-items-template').html() ),
+
 		initialize: function() {
 			_.bindAll(this, "render");
-			this.template = _.template( $('#library-items-template').html() );
 			this.collection.bind('reset', this.render)
 		},
 
@@ -138,8 +142,63 @@
 		});
 		$('#loading-message').remove();
 	};
+
+	window.ExtractItem = Backbone.Model.extend({
 		
-	
+		updateProgress: function(index, total) {
+			var prog = index * 100 / total;
+			this.set({
+				progress: prog,
+			});
+		},
+
+		start: function() {
+			this.set({
+				message: "Fetching ePUB",
+				progress: 0,
+				extracting: true
+			});
+		},
+
+		end: function() {
+			this.set({
+				message: "Fetching ePUB",
+				progress: 0,
+				extracting: false
+			});
+		}
+
+
+	});
+
+	window.ExtractItemView = Backbone.View.extend({
+		
+		el: $('#progress-container')[0],
+
+		template: _.template( $('#extracting-item-template').html() ),
+
+		initialize: function() {
+			_.bindAll(this, "render");	
+			this.model.bind('change', this.render, this);
+		},
+
+		render: function() {
+			var $el = $(this.el);
+			if( this.model.get('extracting') ) {
+				
+				$el.html(this.template(this.model.toJSON()));
+				$el.show("slow");
+			}
+			else {
+				$el.hide("slow");
+			}
+			return this;
+		}
+	});
+		
+	window.extraction = new ExtractItem({extracting: false});
+	window.extract_view = new ExtractItemView({model: extraction});
+	extract_view.render();
 
 	window.Library = new LibraryItems();
 
@@ -180,7 +239,7 @@ var flash = function(text, type) {
 	
 }
 
-$(function() {
+
 	document.getElementById('files').addEventListener('change', handleFileSelect, false);
 	document.getElementById('url-button').addEventListener('click', clickHandler, false);
 	_lawnchair = new Lawnchair(function() {
