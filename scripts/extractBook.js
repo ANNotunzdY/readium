@@ -11,15 +11,10 @@ if(typeof Readium.Utils.MD5 === "undefined" ) {
 	throw "Extract holds Readium::Utils::MD5 as a dependency";
 }
 
-var displayMessage = function(message) {
-	// TODO probably should remove jquery depency
-	$('#loading-status').html( message );
-	console.log(message);
-}
 
 // This method takes a url for an epub, unzips it and then
 // writes its contents out to disk.
-Readium.ExtractBook = function(url, callback) {
+Readium.ExtractBook = function(url, callback, display_message) {
 
 	// Constants
 	var MIMETYPE = "mimetype";
@@ -38,6 +33,11 @@ Readium.ExtractBook = function(url, callback) {
 	var _fixedLayout;
 	var _openToSpread;
 	var _rootUrl;
+
+	// todo polish this up
+	var displayMessage = display_message || console.log;
+
+	
 	
 	var isDirectory = function(zipentry) {
 		return zipentry.name.substr(-1) === "/";
@@ -305,21 +305,4 @@ Readium.ExtractBook = function(url, callback) {
 		_fsApi = fs;
 		beginUnpacking();
 	});
-};
-
-
-
-window.onload = function() {
-	var url = window.location.hash.substring(1);
-	
-	// sanity check (only have to be a little sane)
-	if(url.length <= 0) {
-		displayMessage("The book url does not apear valid");
-		return;
-	}
-	
-	Readium.ExtractBook(url, function() {});
-	displayMessage("Fetching resource from: " + url);
-
-
 };

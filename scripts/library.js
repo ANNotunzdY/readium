@@ -208,12 +208,27 @@ $(function() {
 
 })(jQuery);
 
+var beginExtraction = function(url) {
+	 // Create a new window to the info page.
+	 window.extraction.start();
+    Readium.ExtractBook(url, function() {
+    	window.extraction.end();
+    }, function(message) {
+		window.extraction.set({
+			message: message
+		})
+	});
+};
+
+var resetAndHideForm = function() {
+	$('#add-book-modal').modal('hide');
+};
+
 var handleFileSelect = function(evt) {
 	var files = evt.target.files; // FileList object
 	var url = window.webkitURL.createObjectURL(files[0]);
-	
-    // Create a new window to the info page.
-    chrome.windows.create({ url: ('/views/extractBook.html#' + url), width: 1200, height: 760 });
+	beginExtraction(url);
+	resetAndHideForm();
 };
 
 var clickHandler = function(evt) {
@@ -223,7 +238,8 @@ var clickHandler = function(evt) {
 	}
 	else {
 		var url = input.value;
-		chrome.windows.create({ url: ('/views/extractBook.html#' + url), width: 1200, height: 760 });
+		beginExtraction(url);
+		resetAndHideForm();
 	}
 };
 

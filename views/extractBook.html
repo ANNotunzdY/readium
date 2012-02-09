@@ -15,6 +15,27 @@
 	<script src="/scripts/fileSystemApi.js" type="text/javascript" ></script>
 	<script src="/scripts/extractBook.js" type="text/javascript" ></script>
 	<script src="/debug/helpers.js" type="text/javascript" ></script>
+	
+	<script type="text/javascript">
+		window.onload = function() {
+			var url = window.location.hash.substring(1);
+	
+			// sanity check (only have to be a little sane)
+			if(url.length <= 0) {
+				displayMessage("The book url does not apear valid");
+				return;
+			}
+	
+			Readium.ExtractBook(url, function() {}, function(message) {
+				$('#loading-status').html( message );
+				console.log(message);
+			});
+
+			displayMessage("Fetching resource from: " + url);
+		};
+	</script>
+
+
   </head>
   <body>
 	<div id="loading-message" >
