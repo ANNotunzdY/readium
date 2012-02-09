@@ -87,7 +87,7 @@ $(function() {
 		initialize: function() {
 			_.bindAll(this, "render");
 			this.collection.bind('reset', this.render);
-			this.collection.bind('add', this.render);
+			this.collection.bind('add',   this.addOne, this);
 		},
 
 		render: function() {
@@ -109,6 +109,15 @@ $(function() {
 			// i dunno if this should go here
 			$('#library-books-list').html(this.el)
 			return this;
+		},
+
+		addOne: function(book) {
+			var view = new LibraryItemView({
+				model: item,
+				collection: collection,
+				id: item.get('id')
+			});
+			$(this.el).append( view.render().el );
 		},
 
 		events: {
@@ -202,6 +211,7 @@ $(function() {
 	extract_view.render();
 
 	window.Library = new LibraryItems();
+	window.lib_view = new LibraryItemsView({collection: window.Library});
 
 
 
@@ -276,9 +286,7 @@ var flash = function(text, type) {
 	document.getElementById('url-button').addEventListener('click', clickHandler, false);
 	_lawnchair = new Lawnchair(function() {
 		this.all(function(all) {
-			window.Library.reset(all);	
-			var lib = new LibraryItemsView({collection: window.Library});			
-			lib.render();
+			window.Library.reset(all);							
 		});
 	});
 	$("#block-view-btn").click(function(e) {
