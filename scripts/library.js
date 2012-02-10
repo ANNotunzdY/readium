@@ -120,6 +120,8 @@ $(function() {
 				collection: this.collection,
 				id: book.get('id')
 			});
+			// we are adding so this should always be hidden!
+			this.$('#empty-message').toggle(false);
 			$(this.el).append( view.render().el );
 		},
 
