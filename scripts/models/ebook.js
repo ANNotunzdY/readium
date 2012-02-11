@@ -144,7 +144,7 @@ Readium.Ebook = function(properties, successCallback, errorCallback) {
 
 	var applyBindings = function(domSpot) {
 		var key;
-		var bindings = _packageDocument.getBindingHandlers();
+		var bindings = jQuery.extend({}, _packageDocument.getBindingHandlers());
 
 		// break out early if there are none <= any point to this?
 		if(!bindings || Object.keys(bindings).length === 0) {

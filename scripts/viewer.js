@@ -264,6 +264,13 @@ Readium.TocManager = function(book) {
 					var options = parseViewportTag(dom.getElementsByName("viewport")[0]);
 					options.pageAddCallback = function($newPage) {
 						$newPage.click(toggleUi);
+						var iframe = $('iframe', $newPage)[0];
+						if(iframe) {
+							$('iframe', $newPage)[0].onload = function() {
+								_book.applyBindings(this.contentDocument);
+							}
+						}
+						
 					};
 					_paginator = Readium.FixedPaginator($('#container'), uris, options);
 					_paginator.toggleTwoUp();
