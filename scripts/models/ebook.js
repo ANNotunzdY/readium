@@ -164,6 +164,21 @@ Readium.Ebook = function(properties, successCallback, errorCallback) {
 				params = parseBindingsParams($this);
 				src = bindings[type] + '?' + params;
 				frame = $('<iframe></iframe>');
+				frame.load(function() {
+					// this project was supposed to be done yesterday
+					// don't judge me :(
+					var that = this;
+					var $dom = $(this.contentDocument.body);
+					var calcZoom = function() {
+						return  $dom.height() / $(that).height();
+					}
+
+
+					$(window).resize(function() {
+						$dom.css('zoom', calcZoom());
+					});
+					$dom.css('zoom', calcZoom());
+				});
 				frame.attr('src', src);
 				frame.attr('height', '100%');
 				frame.attr('width', '100%');
